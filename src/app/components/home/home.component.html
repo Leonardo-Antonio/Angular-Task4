@@ -1,0 +1,40 @@
+<div class="container">
+
+      <div class="columns jcc is-multiline mt-3">
+
+        <div *ngFor="let item of publications" class="column is-one-third is-narrow">
+
+          <mat-card class="example-card">
+            <mat-card-header>
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR99Q3dDUmQjB6DcNlSJxJAMJFQPzpjNYyZfg&usqp=CAU" mat-card-avatar/>
+              <mat-card-title> {{item.name}} </mat-card-title>
+              <mat-card-subtitle> {{item.email}} </mat-card-subtitle>
+              <mat-card-subtitle> Aficionado </mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <p>
+                {{item.body}}
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+
+              <button mat-icon-button>
+                <span class="material-icons">
+                  thumb_up
+                </span>
+              </button>
+
+              <button mat-icon-button>
+                <span class="material-icons">
+                  thumb_down
+                </span>
+              </button>
+
+            </mat-card-actions>
+          </mat-card>
+
+        </div>
+
+      </div>
+
+</div>

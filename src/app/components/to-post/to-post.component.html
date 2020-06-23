@@ -1,0 +1,141 @@
+<div class="container">
+  <main class="jcc colums">
+    <div class="has-text-centered mt-5 column is-4">
+
+      <mat-card>
+
+        <form [formGroup]='formPublication' class="example-form">
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Nombre</mat-label>
+            <input formControlName='name' matInput type="text">
+            <button
+              mat-button matSuffix mat-icon-button aria-label="Clear"
+              *ngIf="nameInp.value.length > 0"
+              (click)="clear('name')">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field><br/>
+
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Apellido</mat-label>
+            <input formControlName='surname' matInput type="text">
+            <button
+              mat-button matSuffix mat-icon-button aria-label="Clear"
+              *ngIf="surnameInp.value.length > 0"
+              (click)="clear('surname')">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field><br/>
+
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Nick name</mat-label>
+            <input formControlName='nick' matInput maxlength="8" placeholder="nick">
+            <mat-hint>{{nickInp.value.length}} / 8</mat-hint>
+            <button
+              mat-button matSuffix mat-icon-button aria-label="Clear"
+              *ngIf="nickInp.value.length > 0"
+              (click)="clear('nick')">
+              <mat-icon>close</mat-icon>
+            </button>
+            <mat-error *ngIf="nickInp.hasError('required') && nickInp.touched">
+              Este campo es <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field><br/>
+
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName='email'
+                   placeholder="Ex. pat@example.com">
+            <button
+              mat-button matSuffix mat-icon-button aria-label="Clear"
+              *ngIf="emailInp.value.length > 0" (click)="clear('email')">
+              <mat-icon>close</mat-icon>
+            </button>
+            <mat-error *ngIf="emailInp.errors && emailInp.touched">
+              <mat-error *ngIf="emailInp.hasError('email')">
+                Introduzca un email valido
+              </mat-error>
+              <mat-error *ngIf="emailInp.hasError('required')">
+                Este campo es <strong>requerido</strong>
+              </mat-error>
+            </mat-error>
+          </mat-form-field><br/>
+
+
+          <mat-form-field class="example-full-width">
+            <mat-label>DNI</mat-label>
+            <input formControlName='dni' matInput maxlength="8" placeholder="nick">
+            <mat-hint>{{dniInp.value.length}} / 8</mat-hint>
+            <button
+              mat-button matSuffix mat-icon-button aria-label="Clear"
+              *ngIf="dniInp.value.length > 0"
+              (click)="clear('dni')">
+              <mat-icon>close</mat-icon>
+            </button>
+            <mat-error *ngIf="dniInp.errors && dniInp.touched">
+              <mat-error *ngIf="dniInp.hasError('pattern')">
+                Ingrese un DNI valido [0-9]
+              </mat-error>
+              <mat-error *ngIf="dniInp.hasError('required')">
+                Este campo es <strong>requerido</strong>
+              </mat-error>
+              <mat-error *ngIf="dniInp.hasError('maxlength')">
+                Solo debe tener <strong>8 numeros</strong>
+              </mat-error>
+            </mat-error>
+          </mat-form-field><br/>
+
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Tipo de comentario</mat-label>
+            <mat-select formControlName='type'>
+              <mat-option *ngFor="let item of TypeCom" [value]="item.value">
+                {{item.Type}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field><br/>
+
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Comentario</mat-label>
+            <textarea formControlName='body' matInput placeholder="Introduzca el comentario o punto de vista"></textarea>
+            <mat-hint>{{bodyInp.value.length}} / 100</mat-hint>
+            <button
+              mat-button matSuffix mat-icon-button aria-label="Clear"
+              *ngIf="bodyInp.value.length > 0" (click)="clear('body')">
+              <mat-icon>close</mat-icon>
+            </button>
+            <mat-error *ngIf="bodyInp.errors && bodyInp.touched">
+              <mat-error *ngIf="bodyInp.hasError('required')">
+                Este campo es <strong>requerido</strong>
+              </mat-error>
+              <mat-error *ngIf="bodyInp.hasError('maxlength')">
+                Máximo <strong>100 caracteres</strong>
+              </mat-error>
+              <mat-error *ngIf="bodyInp.hasError('minlength')">
+                Minimo <strong>20 caracteres</strong>
+              </mat-error>
+            </mat-error>
+          </mat-form-field><br/>
+
+          <button
+            [ngClass]="{'has-background-danger': formPublication.invalid}"
+            [disabled]='formPublication.invalid'
+            mat-button class="has-text-primary-light has-background-link block mt-3">
+            <mat-icon>
+              send
+            </mat-icon>
+            Send Data
+          </button>
+
+        </form>
+
+      </mat-card>
+
+    </div>
+  </main>
+</div>
