@@ -1,16 +1,17 @@
 <div class="container">
 
-      <mat-card>
+  <!-- <h1 class="is-family-monospace has-text-centered mt-4 is-size-1-mobile">Programación reactiva</h1> -->
 
+      <mat-card>
         <mat-card-header class="jcc">
           <button mat-button>
-            <mat-icon>
+            <mat-icon class="has-text-info">
               thumb_up
             </mat-icon>
             {{points}}
           </button>
           <button mat-button>
-            <mat-icon>
+            <mat-icon class="has-text-danger">
               thumb_down
             </mat-icon>
             {{pointsDown}}
@@ -26,7 +27,7 @@
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR99Q3dDUmQjB6DcNlSJxJAMJFQPzpjNYyZfg&usqp=CAU" mat-card-avatar/>
                 <mat-card-title> {{item.name}} </mat-card-title>
                 <mat-card-subtitle> {{item.email}} </mat-card-subtitle>
-                <mat-card-subtitle> Aficionado </mat-card-subtitle>
+                <mat-card-subtitle> {{typeCom(item.type)}} </mat-card-subtitle>
               </mat-card-header>
               <mat-card-content>
                 <p>
@@ -36,13 +37,13 @@
               <mat-card-actions>
 
                 <button mat-icon-button>
-                  <mat-icon (click)='up()' class="material-icons">
+                  <mat-icon (click)='up()' class="material-icons has-text-info">
                     thumb_up
                   </mat-icon>
                 </button>
 
                 <button mat-icon-button>
-                  <mat-icon (click)='down()' class="material-icons">
+                  <mat-icon (click)='down()' class="material-icons has-text-danger">
                     thumb_down
                   </mat-icon>
                 </button>
@@ -74,14 +75,14 @@
               </mat-card-content>
               <mat-card-actions>
 
-                <button mat-icon-button>
-                  <span class="material-icons">
+                <button (click)='up()' mat-icon-button>
+                  <span class="material-icons has-text-info">
                     thumb_up
                   </span>
                 </button>
 
-                <button mat-icon-button>
-                  <span class="material-icons">
+                <button (click)='down()' mat-icon-button>
+                  <span class="material-icons has-text-danger">
                     thumb_down
                   </span>
                 </button>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PublicationsService } from 'src/app/services/publications.service';
 import { Publications, SavePublication } from '../../others/interfaces'
+import { ValueCommentary } from '../../others/enums'
 
 @Component({
   selector: 'app-home',
@@ -30,7 +31,7 @@ export class HomeComponent implements OnInit {
     .subscribe(
       resp =>{
         this.publications = resp
-        console.log(resp)
+        //console.log(resp)
       },
       err=> console.log(err)
     )
@@ -47,6 +48,20 @@ export class HomeComponent implements OnInit {
     this._point.savePointDown(this.pointsDown)
   }
 
+
+  typeCom(type: ValueCommentary):string{
+
+    if(type === ValueCommentary.Aficionado){
+      return 'Aficionado'
+    }else if(type === ValueCommentary.Estudiante){
+      return 'Estudiante'
+    }else if(type === ValueCommentary.Experto){
+      return 'Experto'
+    }else{
+      return 'Programador'
+    }
+
+  }
 
 
 

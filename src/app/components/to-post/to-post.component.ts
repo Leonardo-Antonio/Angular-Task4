@@ -6,7 +6,9 @@ import { ValueCommentary } from '../../others/enums'
 
 import { PublicationsService } from '../../services/publications.service'
 import { Router } from '@angular/router'
+
 import Swal from 'sweetalert2'
+
 @Component({
   selector: 'app-to-post',
   templateUrl: './to-post.component.html',
@@ -56,7 +58,7 @@ export class ToPostComponent implements OnInit {
       postId: [1],
       name: ['', []],
       surname: ['', []],
-      nick: ['', [Validators.required, Validators.maxLength(8)]],
+      nick: ['', [Validators.required, Validators.maxLength(8), Validators.minLength(8)]],
       type: ['', [Validators.required]],
       email: ['', [Validators.email, Validators.required]],
       dni: ['', [Validators.pattern(/^[0-9]+$/) ,Validators.maxLength(8), Validators.required]],
@@ -108,6 +110,9 @@ export class ToPostComponent implements OnInit {
       .then((res=>{
         if(res.value){
           this.home()
+        }else{
+          this.clear('body')
+          this.clear('type')
         }
       }))
 

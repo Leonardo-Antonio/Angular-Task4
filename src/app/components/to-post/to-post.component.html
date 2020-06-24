@@ -12,7 +12,9 @@
 
           <mat-form-field class="example-full-width">
             <mat-label>Nombre</mat-label>
-            <input formControlName='name' matInput type="text">
+            <input
+              formControlName='name' matInput type="text"
+              autocomplete="off" />
             <button
               mat-button matSuffix mat-icon-button aria-label="Clear"
               *ngIf="nameInp.value.length > 0"
@@ -24,7 +26,9 @@
 
           <mat-form-field class="example-full-width">
             <mat-label>Apellido</mat-label>
-            <input formControlName='surname' matInput type="text">
+            <input
+              formControlName='surname' matInput type="text"
+              autocomplete="off"/>
             <button
               mat-button matSuffix mat-icon-button aria-label="Clear"
               *ngIf="surnameInp.value.length > 0"
@@ -36,7 +40,10 @@
 
           <mat-form-field  class="example-full-width">
             <mat-label >Nick name</mat-label>
-            <input formControlName='nick' matInput maxlength="8" placeholder="nick">
+            <input
+              formControlName='nick' matInput
+              maxlength="8" placeholder="nick"
+              autocomplete="off" />
             <button
             mat-button matSuffix mat-icon-button aria-label="Clear"
             *ngIf="nickInp.value.length > 0"
@@ -47,16 +54,21 @@
             <mat-hint *ngIf="(nickInp.touched || nickInp.dirty) && nickInp.hasError('required')">
               Este campo es <strong>requerido</strong>
             </mat-hint>
-            <mat-hint *ngIf="emailInp.hasError('maxlength')">
-              Máxiomo <strong>8 caracteres</strong>
+            <mat-hint *ngIf="nickInp.hasError('maxlength')">
+              Máximo <strong>8 caracteres</strong>
+            </mat-hint>
+            <mat-hint *ngIf="nickInp.hasError('minlength')">
+              Debe contener <strong>8 caracteres</strong>
             </mat-hint>
           </mat-form-field><br/>
 
 
           <mat-form-field class="example-full-width">
             <mat-label>Email</mat-label>
-            <input matInput formControlName='email'
-                   placeholder="Ex. pat@example.com">
+            <input
+              matInput formControlName='email'
+              placeholder="Ex. pat@example.com"
+              autocomplete="off"/>
             <button
               mat-button matSuffix mat-icon-button aria-label="Clear"
               *ngIf="emailInp.value.length > 0" (click)="clear('email')">
@@ -77,7 +89,8 @@
               formControlName='dni'
               matInput
               placeholder="nick"
-              maxlength="8"/>
+              maxlength="8"
+              autocomplete="off"/>
               <button
               mat-button matSuffix mat-icon-button aria-label="Clear"
               *ngIf="dniInp.value.length > 0"
