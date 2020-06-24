@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 @Component({
   selector: 'app-navbar-header',
   templateUrl: './navbar-header.component.html',
@@ -7,7 +6,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarHeaderComponent implements OnInit {
 
-  constructor() { }
+  public points: number
+
+  constructor(
+  ) { }
 
   ngOnInit(): void {
   }

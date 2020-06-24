@@ -15,19 +15,20 @@ export class ToPostComponent implements OnInit {
 
   public formPublication: FormGroup
   public TypeCom: TypeCommentary[]
-  public myPost: SavePublication[]
+  public myPost: SavePublication
+  public myPublications: SavePublication[]
 
   constructor(
     private _builder: FormBuilder,
     private _sendData: PublicationsService
-  ) {
-
-    this.myPost = _sendData.getMyPublish()
-    console.log(_sendData.getMyPublish())
+  ){
     this.dataForm()
   }
 
   ngOnInit(): void {
+
+    this.myPublications = this._sendData.getMyPublish()
+
     this.TypeCom = [
       {
         value: ValueCommentary.Aficionado,
@@ -50,13 +51,14 @@ export class ToPostComponent implements OnInit {
 
   dataForm(){
     this.formPublication = this._builder.group({
+      postId: [1],
       name: ['', []],
       surname: ['', []],
       nick: ['', [Validators.required, Validators.maxLength(8)]],
       type: ['', [Validators.required]],
       email: ['', [Validators.email, Validators.required]],
-      dni: ['', [Validators.maxLength(8), Validators.required]],
-      body: ['', [Validators.required, Validators.maxLength(100), Validators.minLength(20)]],
+      dni: ['', [Validators.pattern(/^[0-9]+$/) ,Validators.maxLength(8), Validators.required]],
+      body: ['', [Validators.required, Validators.minLength(15), Validators.maxLength(100)]],
     })
   }
 
@@ -81,6 +83,11 @@ export class ToPostComponent implements OnInit {
 
   clear(camp:string){
     this.formPublication.get(camp).reset('')
+  }
+
+  savePostData(e: Event){
+    e.preventDefault()
+    this._sendData.sendPublication(this.formPublication.value)
   }
 
 }

@@ -1,40 +1,97 @@
 <div class="container">
 
-      <div class="columns jcc is-multiline mt-3">
+      <mat-card>
 
-        <div *ngFor="let item of publications" class="column is-one-third is-narrow">
+        <mat-card-header class="jcc">
+          <button mat-button>
+            <mat-icon>
+              thumb_up
+            </mat-icon>
+            {{points}}
+          </button>
+          <button mat-button>
+            <mat-icon>
+              thumb_down
+            </mat-icon>
+            {{pointsDown}}
+          </button>
+        </mat-card-header>
 
-          <mat-card class="example-card">
-            <mat-card-header>
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR99Q3dDUmQjB6DcNlSJxJAMJFQPzpjNYyZfg&usqp=CAU" mat-card-avatar/>
-              <mat-card-title> {{item.name}} </mat-card-title>
-              <mat-card-subtitle> {{item.email}} </mat-card-subtitle>
-              <mat-card-subtitle> Aficionado </mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content>
-              <p>
-                {{item.body}}
-              </p>
-            </mat-card-content>
-            <mat-card-actions>
+        <div class="columns jcc is-multiline mt-3">
 
-              <button mat-icon-button>
-                <span class="material-icons">
-                  thumb_up
-                </span>
-              </button>
+          <div *ngFor="let item of myPublish" class="column is-one-third is-narrow">
 
-              <button mat-icon-button>
-                <span class="material-icons">
-                  thumb_down
-                </span>
-              </button>
+            <mat-card class="example-card">
+              <mat-card-header>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR99Q3dDUmQjB6DcNlSJxJAMJFQPzpjNYyZfg&usqp=CAU" mat-card-avatar/>
+                <mat-card-title> {{item.name}} </mat-card-title>
+                <mat-card-subtitle> {{item.email}} </mat-card-subtitle>
+                <mat-card-subtitle> Aficionado </mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+                <p>
+                  {{item.body}}
+                </p>
+              </mat-card-content>
+              <mat-card-actions>
 
-            </mat-card-actions>
-          </mat-card>
+                <button mat-icon-button>
+                  <mat-icon (click)='up()' class="material-icons">
+                    thumb_up
+                  </mat-icon>
+                </button>
+
+                <button mat-icon-button>
+                  <mat-icon (click)='down()' class="material-icons">
+                    thumb_down
+                  </mat-icon>
+                </button>
+
+              </mat-card-actions>
+            </mat-card>
+
+          </div>
 
         </div>
 
-      </div>
+
+
+        <div class="columns jcc is-multiline mt-3">
+
+          <div *ngFor="let item of publications" class="column is-one-third is-narrow">
+
+            <mat-card class="example-card">
+              <mat-card-header>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR99Q3dDUmQjB6DcNlSJxJAMJFQPzpjNYyZfg&usqp=CAU" mat-card-avatar/>
+                <mat-card-title> {{item.name}} </mat-card-title>
+                <mat-card-subtitle> {{item.email}} </mat-card-subtitle>
+                <mat-card-subtitle> Aficionado </mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+                <p>
+                  {{item.body}}
+                </p>
+              </mat-card-content>
+              <mat-card-actions>
+
+                <button mat-icon-button>
+                  <span class="material-icons">
+                    thumb_up
+                  </span>
+                </button>
+
+                <button mat-icon-button>
+                  <span class="material-icons">
+                    thumb_down
+                  </span>
+                </button>
+
+              </mat-card-actions>
+            </mat-card>
+
+          </div>
+
+        </div>
+      </mat-card>
 
 </div>

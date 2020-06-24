@@ -6,3 +6,6 @@ mat-form-field , input{
   width: 100%;
 }
 
+.err{
+  font-size: 88%;
+}

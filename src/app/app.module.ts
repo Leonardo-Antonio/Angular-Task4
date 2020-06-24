@@ -12,7 +12,6 @@ import { ReactiveFormsModule } from '@angular/forms'
 import { MaterialModule } from './others/material.module';
 import { HttpClientModule } from '@angular/common/http'
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +25,7 @@ import { HttpClientModule } from '@angular/common/http'
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

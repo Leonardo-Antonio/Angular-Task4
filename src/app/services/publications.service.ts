@@ -41,4 +41,30 @@ export class PublicationsService {
     localStorage.setItem('publications', JSON.stringify(this.mydata))
   }
 
+  getPoints(){
+    let points = JSON.parse(localStorage.getItem('points'))
+    if(points === null){
+      return 0
+    }else{
+      return points
+    }
+  }
+
+  getPointsDown(){
+    let points = JSON.parse(localStorage.getItem('pointsDown'))
+    if(points === null){
+      return 0
+    }else{
+      return points
+    }
+  }
+
+  savePoint(point: number){
+    localStorage.setItem('points', JSON.stringify(point))
+  }
+
+  savePointDown(point: number){
+    localStorage.setItem('pointsDown', JSON.stringify(point))
+  }
+
 }
