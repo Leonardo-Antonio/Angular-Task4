@@ -4,6 +4,10 @@
 
       <mat-card>
 
+        <mat-card-header>
+          <strong>Cantidad de post : {{myPublications.length}}</strong>
+        </mat-card-header>
+
         <form [formGroup]='formPublication' (submit)='savePostData($event)' class="example-form">
 
           <mat-form-field class="example-full-width">
