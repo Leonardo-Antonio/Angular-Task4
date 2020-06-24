@@ -5,7 +5,8 @@ import { TypeCommentary, SavePublication } from '../../others/interfaces'
 import { ValueCommentary } from '../../others/enums'
 
 import { PublicationsService } from '../../services/publications.service'
-
+import { Router } from '@angular/router'
+import Swal from 'sweetalert2'
 @Component({
   selector: 'app-to-post',
   templateUrl: './to-post.component.html',
@@ -20,7 +21,8 @@ export class ToPostComponent implements OnInit {
 
   constructor(
     private _builder: FormBuilder,
-    private _sendData: PublicationsService
+    private _sendData: PublicationsService,
+    private _router: Router
   ){
     this.dataForm()
   }
@@ -85,9 +87,38 @@ export class ToPostComponent implements OnInit {
     this.formPublication.get(camp).reset('')
   }
 
+  home(){
+    this._router.navigate(['/'])
+  }
+
   savePostData(e: Event){
     e.preventDefault()
-    this._sendData.sendPublication(this.formPublication.value)
+    if(this.formPublication.valid){
+      this._sendData.sendPublication(this.formPublication.value)
+
+      Swal.fire({
+        title: 'OK!',
+        text: 'Se ha publicado el comentario',
+        icon: 'success',
+        confirmButtonText: 'Inicio',
+        cancelButtonColor: '#B9B673',
+        cancelButtonText: 'Volver a escribir',
+        showCancelButton: true
+      })
+      .then((res=>{
+        if(res.value){
+          this.home()
+        }
+      }))
+
+    }else{
+      Swal.fire({
+        title: 'Error!',
+        text: 'Debe completar todos los campos',
+        icon: 'error',
+        confirmButtonText: 'Cool'
+      })
+    }
   }
 
 }
